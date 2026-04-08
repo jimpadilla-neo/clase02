@@ -1,0 +1,12 @@
+venv/
+.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.git/
+.gitignore
+.cursor/
+*.md
+.env
+.env.*

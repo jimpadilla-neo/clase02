@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetCare — Gestión de mascotas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido-principal">Ir al contenido principal</a>
+
+    <div class="app-shell">
+      <aside id="sidebar" class="sidebar" aria-label="Barra lateral">
+        <header class="sidebar-brand">
+          <p class="logo" id="logo-petcare">PetCare</p>
+        </header>
+
+        <nav class="sidebar-nav" aria-label="Secciones de la aplicación">
+          <ul class="nav-list">
+            <li>
+              <a href="#inicio" class="nav-link" data-tab="inicio">Inicio</a>
+            </li>
+            <li>
+              <a href="#acceso" class="nav-link" data-tab="acceso">Acceso</a>
+            </li>
+            <li>
+              <a href="#servicios" class="nav-link" data-tab="servicios">Servicios</a>
+            </li>
+            <li>
+              <a href="#mascotas" class="nav-link" data-tab="mascotas">Mascotas</a>
+            </li>
+            <li>
+              <a href="#reporte" class="nav-link" data-tab="reporte">Reporte</a>
+            </li>
+          </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+          <p id="badge-usuario" class="badge-usuario" role="status" aria-live="polite" hidden></p>
+          <button type="button" id="btn-salir" class="btn-salir" aria-label="Cerrar sesión">
+            <span class="btn-texto">Salir</span>
+            <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+          </button>
+        </footer>
+      </aside>
+
+      <main id="contenido-principal" class="contenido-principal">
+        <section id="inicio" class="section active" aria-labelledby="titulo-inicio" tabindex="-1">
+          <header>
+            <h1 id="titulo-inicio">Bienvenido a PetCare</h1>
+            <p id="banner-bienvenida" class="banner-bienvenida">
+              Administra servicios y mascotas desde un solo lugar.
+            </p>
+          </header>
+
+          <form id="form-saludo" class="formulario" aria-labelledby="titulo-saludo" novalidate>
+            <h2 id="titulo-saludo">Saludo personalizado</h2>
+            <p>
+              <label for="input-nombre-saludo">Tu nombre</label>
+              <input type="text" id="input-nombre-saludo" name="nombre" autocomplete="name" required />
+            </p>
+            <p>
+              <button type="submit" id="btn-enviar-saludo">
+                <span class="btn-texto">Obtener saludo</span>
+                <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+              </button>
+            </p>
+            <output id="resultado-saludo" for="input-nombre-saludo" aria-live="polite"></output>
+          </form>
+        </section>
+
+        <section id="acceso" class="section" aria-labelledby="titulo-acceso" tabindex="-1">
+          <header>
+            <h1 id="titulo-acceso">Acceso</h1>
+          </header>
+
+          <article aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">Registro</h2>
+            <form id="form-registro" class="formulario" novalidate>
+              <p>
+                <label for="input-correo-registro">Correo electrónico</label>
+                <input
+                  type="email"
+                  id="input-correo-registro"
+                  name="correo"
+                  autocomplete="email"
+                  required
+                />
+              </p>
+              <p>
+                <label for="input-contrasena-registro">Contraseña</label>
+                <input
+                  type="password"
+                  id="input-contrasena-registro"
+                  name="contraseña"
+                  autocomplete="new-password"
+                  required
+                />
+              </p>
+              <p>
+                <button type="submit" id="btn-registro">
+                  <span class="btn-texto">Registrarse</span>
+                  <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+                </button>
+              </p>
+              <output id="resultado-registro" for="input-correo-registro" aria-live="polite"></output>
+            </form>
+          </article>
+
+          <article aria-labelledby="titulo-login">
+            <h2 id="titulo-login">Iniciar sesión</h2>
+            <form id="form-login" class="formulario" novalidate>
+              <p>
+                <label for="input-correo-login">Correo electrónico</label>
+                <input
+                  type="email"
+                  id="input-correo-login"
+                  name="correo"
+                  autocomplete="username"
+                  required
+                />
+              </p>
+              <p>
+                <label for="input-contrasena-login">Contraseña</label>
+                <input
+                  type="password"
+                  id="input-contrasena-login"
+                  name="contraseña"
+                  autocomplete="current-password"
+                  required
+                />
+              </p>
+              <p>
+                <button type="submit" id="btn-login">
+                  <span class="btn-texto">Entrar</span>
+                  <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+                </button>
+              </p>
+              <output id="resultado-login" for="input-correo-login" aria-live="polite"></output>
+            </form>
+          </article>
+        </section>
+
+        <section id="servicios" class="section" aria-labelledby="titulo-servicios" tabindex="-1">
+          <header>
+            <h1 id="titulo-servicios">Servicios</h1>
+          </header>
+
+          <form id="form-agregar-servicio" class="formulario" novalidate>
+            <h2 id="titulo-nuevo-servicio">Agregar servicio</h2>
+            <p>
+              <label for="input-nombre-servicio">Nombre del servicio</label>
+              <input type="text" id="input-nombre-servicio" name="nombre" required />
+            </p>
+            <p>
+              <label for="input-precio-servicio">Precio</label>
+              <input
+                type="number"
+                id="input-precio-servicio"
+                name="precio"
+                min="0"
+                step="1"
+                required
+              />
+            </p>
+            <p>
+              <button type="submit" id="btn-agregar-servicio">
+                <span class="btn-texto">Guardar servicio</span>
+                <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+              </button>
+            </p>
+            <output id="resultado-agregar-servicio" for="input-nombre-servicio" aria-live="polite"></output>
+          </form>
+
+          <section aria-labelledby="titulo-lista-servicios">
+            <h2 id="titulo-lista-servicios">Lista de servicios</h2>
+            <button type="button" id="btn-actualizar-servicios">
+              <span class="btn-texto">Actualizar lista</span>
+              <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+            </button>
+            <ul id="lista-servicios" class="lista-datos"></ul>
+          </section>
+        </section>
+
+        <section id="mascotas" class="section" aria-labelledby="titulo-mascotas" tabindex="-1">
+          <header>
+            <h1 id="titulo-mascotas">Mascotas</h1>
+          </header>
+
+          <form id="form-registrar-mascota" class="formulario" novalidate>
+            <h2 id="titulo-registrar-mascota">Registrar mascota</h2>
+            <p>
+              <label for="input-correo-mascota">Correo del dueño</label>
+              <input
+                type="email"
+                id="input-correo-mascota"
+                name="correo"
+                autocomplete="email"
+                required
+              />
+            </p>
+            <p>
+              <label for="input-nombre-mascota">Nombre de la mascota</label>
+              <input type="text" id="input-nombre-mascota" name="nombre_mascota" required />
+            </p>
+            <p>
+              <label for="select-servicio-mascota">Servicio</label>
+              <select id="select-servicio-mascota" name="tipo_servicio" required>
+                <option value="">Seleccione un servicio</option>
+              </select>
+            </p>
+            <p>
+              <label for="input-fecha-mascota">Fecha</label>
+              <input type="date" id="input-fecha-mascota" name="fecha" required />
+            </p>
+            <p>
+              <button type="submit" id="btn-registrar-mascota">
+                <span class="btn-texto">Registrar</span>
+                <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+              </button>
+            </p>
+            <output id="resultado-registrar-mascota" for="input-nombre-mascota" aria-live="polite"></output>
+          </form>
+
+          <section aria-labelledby="titulo-buscar-mascotas">
+            <h2 id="titulo-buscar-mascotas">Buscar por correo</h2>
+            <form id="form-buscar-mascotas" class="formulario form-inline" novalidate>
+              <p>
+                <label for="input-busqueda-mascotas-correo">Correo</label>
+                <input
+                  type="email"
+                  id="input-busqueda-mascotas-correo"
+                  name="correo"
+                  autocomplete="email"
+                  required
+                />
+              </p>
+              <p>
+                <button type="submit" id="btn-buscar-mascotas">
+                  <span class="btn-texto">Buscar</span>
+                  <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+                </button>
+              </p>
+            </form>
+            <div id="resultado-busqueda-mascotas" class="resultado-busqueda" role="region" aria-live="polite"></div>
+          </section>
+        </section>
+
+        <section id="reporte" class="section" aria-labelledby="titulo-reporte" tabindex="-1">
+          <header>
+            <h1 id="titulo-reporte">Reporte</h1>
+          </header>
+
+          <form id="form-buscar-reporte" class="formulario form-inline" novalidate>
+            <p>
+              <label for="input-reporte-correo">Correo</label>
+              <input
+                type="email"
+                id="input-reporte-correo"
+                name="correo"
+                autocomplete="email"
+                required
+              />
+            </p>
+            <p>
+              <button type="submit" id="btn-buscar-reporte">
+                <span class="btn-texto">Buscar reporte</span>
+                <span class="btn-cargando" hidden aria-live="polite">Cargando...</span>
+              </button>
+            </p>
+          </form>
+          <div id="resultado-reporte" class="resultado-busqueda" role="region" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
