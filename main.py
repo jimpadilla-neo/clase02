@@ -1,16 +1,17 @@
-from pathlib import Path
+"""Backend REST PetCare. La interfaz web estática vive en `frontend/` (p. ej. Nginx en Cloud Run)."""
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 
 from routes.auth import router as auth_router
 from routes.servicios import router as servicios_router
 from routes.mascotas import router as mascotas_router
 
-BASE_DIR = Path(__file__).resolve().parent
-
-app = FastAPI()
+app = FastAPI(
+    title="PetCare API",
+    description="Backend: autenticación temporal, servicios y mascotas. Sin archivos estáticos.",
+    version="1.0.0",
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,24 +26,14 @@ app.include_router(auth_router)
 app.include_router(mascotas_router)
 
 
+@app.get("/")
+def root():
+    return {"mensaje": "¡Hola! Bienvenido a mi API", "documentacion": "/docs"}
+
+
 @app.get("/api")
 def saludar():
     return {"mensaje": "¡Hola! Bienvenido a mi API"}
-
-
-@app.get("/")
-def index():
-    return FileResponse(BASE_DIR / "index.html")
-
-
-@app.get("/style.css")
-def stylesheet():
-    return FileResponse(BASE_DIR / "style.css", media_type="text/css")
-
-
-@app.get("/app.js")
-def app_script():
-    return FileResponse(BASE_DIR / "app.js", media_type="application/javascript")
 
 
 @app.get("/bienvenido/{nombre}")

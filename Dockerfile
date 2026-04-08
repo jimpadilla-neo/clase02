@@ -14,7 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 COPY routes/ ./routes/
-COPY index.html style.css app.js ./
 
 RUN chown -R appuser:appuser /app
 
